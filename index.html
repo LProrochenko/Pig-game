@@ -29,6 +29,23 @@
       <button class="btn btn-new">🐷 New game</button>
       <button class="btn btn-roll">🎲 Roll dice</button>
       <button class="btn btn-hold">👌 Hold</button>
+      <button class="btn btn-instruction">🧾 How to play</button>
+      <div class="instruction hidden">
+         <button class="close-modal-window">&times;</button>
+         <p class="instruction-text">
+            Players take turns to roll a dice. On each turn, the player rolls the die as many times as they want. The result of each roll is added to their current score for that turn.
+         </p>
+         <p class="instruction-text">
+            A player may choose to "Hold" at any time during their turn to add the current score to their total score and pass the turn to the other player.
+         </p>
+         <p class="instruction-text">
+            If the player rolls a 1, they lose all points accumulated during that turn, and their turn passes to the second player.
+         </p>
+         <p class="instruction-text">
+            The game continues until one of the players reaches a total score of 100 or more points.
+         </p>
+         <button class="btn btn-ok">✔️ ok</button>
+      </div>
    </main>
 <script src="/js/main.js"></script>
 </body>
