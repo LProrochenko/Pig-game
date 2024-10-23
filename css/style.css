@@ -28,24 +28,30 @@ body {
   align-items: center;
 }
 main {
-  width: 100rem;
-  height: 60rem;
-  background-color: rgba(255, 255, 255, 0.35);
+  padding-top: 7rem;
+  height: 46rem;
   display: flex;
+}
+.playing-field {
+  width: 100rem;
+  background-color: rgba(255, 255, 255, 0.35);
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
   position: relative;
+  display: flex;
 }
 .player {
   flex: 50%;
-  padding: 9rem;
+  padding: 4rem 9rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   transition: all 0.75s;
+  filter: blur(0.4rem);
 }
 .player-active {
   background-color: rgba(255, 255, 255, 0.4);
+  filter: blur();
 }
 .player-active .name {
   font-weight: 700;
@@ -53,7 +59,6 @@ main {
 .player-active .score {
   font-weight: 400;
 }
-
 .player-active .current {
   opacity: 1;
 }
@@ -96,10 +101,7 @@ main {
   left: 50%;
   transform: translateX(-50%);
   top: 16.5rem;
-}
-.hidden {
-  display: none;
-}
+  }
 .btn {
   position: absolute;
   font-size: 1.8rem;
@@ -121,53 +123,64 @@ main {
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
 }
 .btn-new {
-  top: -8rem;
+  top: -7rem;
   left: 2rem;
 }
 .btn-roll {
-  top: 40rem;
+  top: 31rem;
   left: 50%;
   transform: translateX(-50%);
 }
 .btn-hold {
-  top: 46rem;
+  top: 37rem;
   left: 50%;
   transform: translateX(-50%);
 }
 .btn-instruction {
-  top: -8rem;
+  top: -7rem;
   right: 2rem;
 }
 .btn-instruction:active,
 .btn-new:active {
   transform: translate(-0%, 3px);
 }
+.modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+  justify-content: center;
+  align-items: center;
+}
 .instruction {
-   width: 70rem;
-   padding: 7rem 5rem;
-   position: absolute;
-   left: 50%;
-   top: 4rem;
-   transform: translateX(-50%);
-   background-color: #ee7d05;
+  width: 70rem;
+  padding: 7rem 5rem;
+  position: absolute;
+  background-color: #ee7d05;
 }
 .close-modal-window {
-   position: absolute;
-   top: 1.2rem;
-   right: 2rem;
-   font-size: 5rem;
-   color: #000;
-   border: none;
-   background: none;
- }
+  position: absolute;
+  top: 1.2rem;
+  right: 2rem;
+  font-size: 5rem;
+  color: #000;
+  border: none;
+  background: none;
+}
 .instruction-text {
-   font-size: 2.8rem;
-   font-weight: 500;
-   margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
 }
 .btn-ok {
-   left: 50%;
-   transform: translateX(-50%);
+  left: 50%;
+  transform: translateX(-50%);
 }
-
-
+.hidden {
+  display: none;
+}
