@@ -12,11 +12,35 @@ const score0Element = document.getElementById('score-0');
 const score1Element = document.getElementById('score-1');
 
 //Init game
-let current = 0;
+let current, score, totalScores, activePlayer, isPlaying, winnerSign;
 
-diceElement.classList.add('hidden');
+const initGame = function () {
+  diceElement.classList.add('hidden');
+  current = 0;
+  score = 0;
+  totalScores = [0, 0];
+  activePlayer = 0;
+  isPlaying = true;
+  current0Element.textContent = current;
+  current1Element.textContent = current;
+  score0Element.textContent = current;
+  score1Element.textContent = current;
+};
+initGame();
+
+const switchPlayer = function () {
+  activePlayer = activePlayer === 0 ? 1 : 0;
+  player0Element.classList.toggle('player-active');
+  player1Element.classList.toggle('player-active');
+  current = 0;
+  score = 0;
+  current0Element.textContent = current;
+  current1Element.textContent = current;
+};
+
 //Roll the dice
 btnRoll.addEventListener('click', function () {
+  if (isPlaying) {
     const diceSound = new Audio('audio/dice.mp3');
     diceSound.play();
     diceElement.classList.add('dice-rotate');
@@ -31,8 +55,41 @@ btnRoll.addEventListener('click', function () {
     //3. If the number is one - switch to the next player, if not - add number to current score
     if (randomNumber !== 1) {
       current += randomNumber;
-      document.getElementById('current-0').textContent = current; // change later
+      document.getElementById(`current-${activePlayer}`).textContent = current;
+    } else {
+      switchPlayer();
     }
+  }
+});
+
+btnHold.addEventListener('click', function () {
+  if (isPlaying) {
+    //Add current score of active player to total score
+    score += current;
+    totalScores[activePlayer] += score;
+    document.getElementById(`score-${activePlayer}`).textContent =
+      totalScores[activePlayer];
+
+    //If totalscore => 100, active player won, if not - switch player
+    if (totalScores[activePlayer] < 20) {
+      switchPlayer();
+    } else {
+      isPlaying = false;
+      const fanfareSound = new Audio('audio/fanfare.mp3');
+      fanfareSound.play();
+      document
+        .querySelector(`.player-${activePlayer}`)
+        .classList.add('player-winner');
+      document
+        .querySelector(`.player-${activePlayer}`)
+        .classList.remove('player-active');
+      winnerSign = document.createElement('div');
+      winnerSign.classList.add('winnerSign');
+      winnerSign.textContent = '🏆';
+      let wonPlayer = document.querySelector(`.player-${activePlayer}`);
+      wonPlayer.appendChild(winnerSign);
+    }
+  }
 });
 
 
