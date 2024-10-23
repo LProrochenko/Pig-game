@@ -104,4 +104,22 @@ player0Element.classList.add('player-active');
   winnerSign.remove();
 });
 
+//Instruction
+btnInstruction.addEventListener('click', function () {
+  modal.classList.remove('hidden');
+});
 
+btnCloseModalWindow.addEventListener('click', closeModalWindow);
+btnOk.addEventListener('click', closeModalWindow);
+
+window.addEventListener('click', function (e) {
+  if (e.target === modal) {
+     closeModalWindow();
+  }
+});
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
+     closeModalWindow();
+  }
+});
