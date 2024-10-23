@@ -1,37 +1,43 @@
-/* play-regular - latin */
+/* Fonts */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-display: swap;
   font-family: 'Play';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/play-v19-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../fonts/play-v19-latin-regular.woff2') format('woff2');
 }
-/* play-700 - latin */
+
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-display: swap;
   font-family: 'Play';
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/play-v19-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../fonts/play-v19-latin-700.woff2') format('woff2');
 }
+
+/* Global styles */
 html {
   box-sizing: border-box;
   font-size: 60%;
 }
+
 body {
-  font-family: 'Play', san-serif;
-  font-weight: 400px;
+  font-family: 'Play', sans-serif;
+  font-weight: 400;
   height: 100vh;
   background-image: linear-gradient(to top right, #e2b810 0%, #ec3b05 100%);
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+/* Main structure */
 main {
   padding-top: 7rem;
   height: 46rem;
   display: flex;
 }
+
 .playing-field {
   width: 100rem;
   background-color: rgba(255, 255, 255, 0.35);
@@ -39,6 +45,7 @@ main {
   position: relative;
   display: flex;
 }
+
 .player {
   flex: 50%;
   padding: 4rem 9rem;
@@ -49,27 +56,35 @@ main {
   transition: all 0.75s;
   filter: blur(0.4rem);
 }
+
 .player-active {
   background-color: rgba(255, 255, 255, 0.4);
-  filter: blur();
+  filter: blur(0);
 }
-.player-active .name {
+
+.player-active .name,
+.player-winner .name {
   font-weight: 700;
 }
+
 .player-active .score {
   font-weight: 400;
 }
+
 .player-active .current {
   opacity: 1;
 }
+
 .player-winner {
   background-color: #2f2f2f;
-  filter: blur();
+  filter: blur(0);
 }
+
 .player-winner .name {
-  font-weight: 700;
   color: #d50b0b;
 }
+
+/* Player elements */
 .name {
   font-size: 4rem;
   margin-bottom: 1rem;
@@ -77,12 +92,14 @@ main {
   letter-spacing: 1px;
   word-spacing: 2px;
 }
+
 .score {
   font-size: 8rem;
   margin-bottom: auto;
   color: #ee7d05;
   font-weight: 300;
 }
+
 .current {
   background-color: #ee7d05;
   border-radius: 9px;
@@ -95,14 +112,18 @@ main {
   color: #eee;
   opacity: 0.8;
 }
+
 .current-label {
   font-size: 1.7rem;
   margin-bottom: 1.8rem;
   text-transform: uppercase;
 }
+
 .current-score {
   font-size: 3.5rem;
 }
+
+/* Dice */
 .dice {
   height: 10rem;
   position: absolute;
@@ -110,9 +131,11 @@ main {
   transform: translateX(-50%);
   top: 16.5rem;
   }
+
 .dice-rotate {
   animation: rotate 1s ease-in-out;
 }
+
 @keyframes rotate {
   from {
     transform: translateX(-50%) rotate(0);
@@ -121,6 +144,25 @@ main {
     transform: translateX(-50%) rotate(360deg);
   }
 }
+
+/* Winner sign */
+.winnerSign {
+  position: absolute;
+  top: 18rem;
+  font-size: 10rem;
+  animation: size 2.5s ease-in-out;
+}
+
+@keyframes size {
+  from {
+    transform: scale(3);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Buttons */
 .btn {
   position: absolute;
   font-size: 1.8rem;
@@ -133,36 +175,47 @@ main {
   box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
   text-transform: uppercase;
 }
+
 .btn::first-letter {
   font-size: 2.4rem;
   margin-right: 0.7rem;
 }
+
 .btn:active {
   transform: translate(-50%, 3px);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
 }
+
 .btn-new {
   top: -7rem;
   left: 2rem;
 }
+
+.btn-roll,
+.btn-hold {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .btn-roll {
   top: 31rem;
-  left: 50%;
-  transform: translateX(-50%);
 }
+
 .btn-hold {
   top: 37rem;
-  left: 50%;
-  transform: translateX(-50%);
 }
+
 .btn-instruction {
   top: -7rem;
   right: 2rem;
 }
+
 .btn-instruction:active,
 .btn-new:active {
   transform: translate(-0%, 3px);
 }
+
+/* Modal window */
 .modal {
   display: flex;
   position: fixed;
@@ -176,6 +229,7 @@ main {
   justify-content: center;
   align-items: center;
 }
+
 .instruction {
   width: 70rem;
   padding: 7rem 5rem;
@@ -183,6 +237,7 @@ main {
   background-color: #ee7d05;
   animation: move 1s ease-out;
 }
+
 @keyframes move {
   from {
     transform: translateY(-100%);
@@ -191,6 +246,7 @@ main {
     transform: translateY(0);
   }
 }
+
 .close-modal-window {
   position: absolute;
   top: 1.2rem;
@@ -200,15 +256,18 @@ main {
   border: none;
   background: none;
 }
+
 .instruction-text {
   font-size: 2.5rem;
   font-weight: 500;
   margin-bottom: 2rem;
 }
+
 .btn-ok {
   left: 50%;
   transform: translateX(-50%);
 }
+
 .hidden {
   display: none;
 }
