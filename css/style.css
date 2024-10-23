@@ -86,7 +86,7 @@ main {
 
 /* Player elements */
 .name {
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -130,7 +130,7 @@ main {
   left: 50%;
   transform: translateX(-50%);
   top: 16.5rem;
-  }
+}
 
 .dice-rotate {
   animation: rotate 1s ease-in-out;
@@ -150,10 +150,10 @@ main {
   position: absolute;
   top: 18rem;
   font-size: 10rem;
-  animation: size 2.5s ease-in-out;
+  animation: zoom 2.5s ease-in-out;
 }
 
-@keyframes size {
+@keyframes zoom {
   from {
     transform: scale(3);
   }
