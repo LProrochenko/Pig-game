@@ -10,6 +10,10 @@ const current0Element = document.getElementById('current-0');
 const current1Element = document.getElementById('current-1');
 const score0Element = document.getElementById('score-0');
 const score1Element = document.getElementById('score-1');
+const btnInstruction = document.querySelector('.btn-instruction');
+const btnCloseModalWindow = document.querySelector('.close-modal-window');
+const btnOk = document.querySelector('.btn-ok');
+const modal = document.querySelector('.modal'); 
 
 //Init game
 let current, score, totalScores, activePlayer, isPlaying, winnerSign;
@@ -36,6 +40,10 @@ const switchPlayer = function () {
   score = 0;
   current0Element.textContent = current;
   current1Element.textContent = current;
+};
+
+const closeModalWindow = function () {
+  modal.classList.add('hidden');
 };
 
 //Roll the dice
