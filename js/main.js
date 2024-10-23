@@ -92,6 +92,16 @@ btnHold.addEventListener('click', function () {
   }
 });
 
-
+btnNew.addEventListener('click', function () {
+  document
+  .querySelector(`.player-${activePlayer}`)
+  .classList.remove('player-active');
+player0Element.classList.add('player-active');
+  initGame();
+  document
+    .querySelector(`.player-${activePlayer}`)
+    .classList.remove('player-winner');
+  winnerSign.remove();
+});
 
 
