@@ -13,7 +13,7 @@ const score1Element = document.getElementById('score-1');
 const btnInstruction = document.querySelector('.btn-instruction');
 const btnCloseModalWindow = document.querySelector('.close-modal-window');
 const btnOk = document.querySelector('.btn-ok');
-const modal = document.querySelector('.modal'); 
+const modal = document.querySelector('.modal');
 
 //Init game
 let current, score, totalScores, activePlayer, isPlaying, winnerSign;
@@ -27,8 +27,8 @@ const initGame = function () {
   isPlaying = true;
   current0Element.textContent = current;
   current1Element.textContent = current;
-  score0Element.textContent = current;
-  score1Element.textContent = current;
+  score0Element.textContent = score;
+  score1Element.textContent = score;
 };
 initGame();
 
@@ -102,14 +102,14 @@ btnHold.addEventListener('click', function () {
 
 btnNew.addEventListener('click', function () {
   document
-  .querySelector(`.player-${activePlayer}`)
-  .classList.remove('player-active');
-player0Element.classList.add('player-active');
-  initGame();
+    .querySelector(`.player-${activePlayer}`)
+    .classList.remove('player-active');
   document
     .querySelector(`.player-${activePlayer}`)
     .classList.remove('player-winner');
-  winnerSign.remove();
+  player0Element.classList.add('player-active');
+  winnerSign?.remove();
+  initGame();
 });
 
 //Instruction
@@ -122,12 +122,12 @@ btnOk.addEventListener('click', closeModalWindow);
 
 window.addEventListener('click', function (e) {
   if (e.target === modal) {
-     closeModalWindow();
+    closeModalWindow();
   }
 });
 
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
-     closeModalWindow();
+    closeModalWindow();
   }
 });
