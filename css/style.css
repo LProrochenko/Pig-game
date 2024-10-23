@@ -62,6 +62,14 @@ main {
 .player-active .current {
   opacity: 1;
 }
+.player-winner {
+  background-color: #2f2f2f;
+  filter: blur();
+}
+.player-winner .name {
+  font-weight: 700;
+  color: #d50b0b;
+}
 .name {
   font-size: 4rem;
   margin-bottom: 1rem;
@@ -102,6 +110,17 @@ main {
   transform: translateX(-50%);
   top: 16.5rem;
   }
+.dice-rotate {
+  animation: rotate 1s ease-in-out;
+}
+@keyframes rotate {
+  from {
+    transform: translateX(-50%) rotate(0);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
 .btn {
   position: absolute;
   font-size: 1.8rem;
@@ -162,6 +181,15 @@ main {
   padding: 7rem 5rem;
   position: absolute;
   background-color: #ee7d05;
+  animation: move 1s ease-out;
+}
+@keyframes move {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 .close-modal-window {
   position: absolute;
