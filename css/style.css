@@ -54,7 +54,7 @@ main {
   justify-content: center;
   align-items: center;
   transition: all 0.75s;
-  filter: blur(0.4rem);
+  filter: blur(0.25rem);
 }
 
 .player-active {
